@@ -157,12 +157,12 @@ No known bugs at this time.
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
 
-Second part of Airbnb: 
+Second part of Airbnb:<br/>
 Joann Vuong
 
-Third part of Aibnb: 
-Banu Sapakova - [Github](https://github.com/banuaksom)
-Sudeep Raj - [Github](https://github.com/rajsudeep)
+Third part of Aibnb:<br/>
+Banu Sapakova - [Github](https://github.com/banuaksom)<br/>
+Sudeep Raj - [Github](https://github.com/rajsudeep)<br/>
 
 ## License
 Public Domain. No copy write protection. 
