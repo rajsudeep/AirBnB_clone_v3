@@ -72,9 +72,9 @@ def put_place(place_id):
     req = request.get_json()
     if not req:
         abort(400, "Not a JSON")
+    ignore = ["id", "user_id", "city_id", "created_at", "updated_at"]
     for k, v in req.items():
-        if k is not
-        "id" or "user_id" or "city_id" or "created_at" or "updated_at":
+        if k is not ignore:
             setattr(obj, k, v)
     storage.save()
     return make_response(obj.to_dict(), 200)
