@@ -94,7 +94,7 @@ class TestFileStorage(unittest.TestCase):
         s.save()
         self.assertEqual(s, models.storage.get("State", s.id))
 
-    @unittest.skipIf(model.storage_t != 'db', "not testing db storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count(self):
         """Test that count() increments for new object"""
         prev_count = models.storage.count("State")
@@ -102,3 +102,31 @@ class TestFileStorage(unittest.TestCase):
         s.save()
         new_count = models.storage.count("State")
         self.assertEqual(prev_count + 1, new_count)
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
+    def test_get(self):
+        """Test get function """
+        s = State(name="California")
+        s.save()
+        retrieved_state = models.storage.get('State', s.id)
+        self.assertEqual(retrieved_state, s)
+        retrieved_state = models.storage.get('State', 5)
+        self.assertEqual(retrieved_state, None)
+        retrieved_state = models.storage.get('State', 2.2)
+        self.assertEqual(retrieved_state, None)
+        retrieved_state = models.storage.get('hey', s.id)
+        self.assertEqual(retrieved_state, None)
+        retrieved_state = models.storage.get('State', 'lmao')
+        self.assertEqual(retrieved_state, None)
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
+    def test_count(self):
+        """Test count function"""
+        prev_count = models.storage.count()
+        prev_class_count = models.storage.count('State')
+        s = State(name="California")
+        s.save()
+        new_count = models.storage.count()
+        new_class_count = models.storage.count('State')
+        self.assertEqual(new_count, prev_count + 1)
+        self.assertEqual(new_class_count, prev_class_count + 1)
