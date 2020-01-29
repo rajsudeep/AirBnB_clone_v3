@@ -56,6 +56,7 @@ def post_place(city_id):
         abort(404)
     if 'name' not in req:
         abort(400, "Missing name")
+    req["city_id"] = city_id
     obj = Place(**req)
     storage.new(obj)
     storage.save()
