@@ -7,7 +7,7 @@ from models.state import State
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def get_states():
-    """ retrieves the lise of state objs """
+    """ retrieves the list of state objs """
     new_dict = [v.to_dict() for v in storage.all(State).values()]
     return jsonify(new_dict)
 
