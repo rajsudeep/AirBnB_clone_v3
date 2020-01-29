@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" users module """
 from api.v1.views import app_views
 from flask import Flask, jsonify, abort, make_response, request
 from models import storage
