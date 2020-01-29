@@ -11,6 +11,7 @@ def get_users():
     new_dict = [v.to_dict() for v in storage.all(User).values()]
     return jsonify(new_dict)
 
+
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 def get_user(user_id):
     """ retrieves specific user """
@@ -18,6 +19,7 @@ def get_user(user_id):
     if not obj:
         abort(404)
     return jsonify(obj.to_dict())
+
 
 @app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
 def delete_user(user_id):
@@ -28,6 +30,7 @@ def delete_user(user_id):
     storage.delete(obj)
     storage.save()
     return make_response(jsonify({}), 200)
+
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def post_user():
@@ -43,7 +46,8 @@ def post_user():
     storage.new(obj)
     storage.save()
     return make_response(obj.to_dict(), 201)
-    
+
+
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def put_user(user_id):
     """ update specified state """
