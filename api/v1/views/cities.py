@@ -34,21 +34,21 @@ def delete_city(city_id):
 
 @app_views.route('states/<state_id>/cities', methods=['POST'], strict_slashes=False)
 def post_city(state_id):
-    obj = storage.get("State", state_id)
-    if not obj:
+    if not storage.get("State", state_id):
         abort(404)
     req = request.get_json()
     if not req:
         abort(400, "Not a JSON")
     if 'name' not in req:
         abort(400, "Missing name")
-    new_obj = City(**req)
-    storage.new(new_obj)
+    req["state_id"] = state_id
+    obj = City(**req)
+    storage.new(obj)
     storage.save()
-    return make_response(new_obj.to_dict(), 201)
+    return make_response(obj.to_dict(), 201)
     
-"""@app_views.route('cities/<city_id>', methods=['PUT'], strict_slashes=False)
-def put_state(state_id):
+@app_views.route('cities/<city_id>', methods=['PUT'], strict_slashes=False)
+def put_city(city_id):
     obj = storage.get("City", city_id)
     if not obj:
         abort(404)
@@ -60,4 +60,3 @@ def put_state(state_id):
             setattr(obj, k, v)
     storage.save()
     return make_response(obj.to_dict(), 200)
-"""
