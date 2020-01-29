@@ -9,6 +9,7 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def get_status():
     """ gets the status """
