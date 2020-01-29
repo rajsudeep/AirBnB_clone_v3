@@ -11,13 +11,14 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 
 @app.teardown_appcontext
-def close(var=None):
-    """ cals storage.close() """
+def close(self):
+    """ calls storage.close() """
     storage.close()
 
 
 @app.errorhandler(404)
-def not_found(error):
+def not_found(self):
+    """ handles error """
     return make_response(jsonify({"error": "Not found"}), 404)
 
 if __name__ == "__main__":
