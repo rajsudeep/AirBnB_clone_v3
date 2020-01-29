@@ -11,6 +11,7 @@ def get_states():
     new_dict = [v.to_dict() for v in storage.all(State).values()]
     return jsonify(new_dict)
 
+
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state(state_id):
     """ retrieves specific state """
@@ -19,7 +20,9 @@ def get_state(state_id):
         abort(404)
     return jsonify(obj.to_dict())
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+
+@app_views.route('/states/<state_id>', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_state(state_id):
     """ deletes specific state """
     obj = storage.get("State", state_id)
@@ -28,6 +31,7 @@ def delete_state(state_id):
     storage.delete(obj)
     storage.save()
     return make_response(jsonify({}), 200)
+
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 def post_state():
@@ -41,7 +45,8 @@ def post_state():
     storage.new(obj)
     storage.save()
     return make_response(obj.to_dict(), 201)
-    
+
+
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def put_state(state_id):
     """ update specified state """
