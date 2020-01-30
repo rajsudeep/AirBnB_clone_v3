@@ -10,7 +10,7 @@ from models.user import User
 
 @app_views.route('/places/<place_id>/reviews', methods=['GET'],
                  strict_slashes=False)
-def get_places(place_id):
+def get_places_by_place_id(place_id):
     """ retrieves the list of Review objs """
     obj = storage.get("Place", place_id)
     if not obj:
@@ -44,7 +44,7 @@ def delete_review(review_id):
 @app_views.route('places/<place_id>/reviews', methods=['POST'],
                  strict_slashes=False)
 def post_review(place_id):
-    """ creates place obj """
+    """ creates review obj """
     if not storage.get("Place", place_id):
         abort(404)
     req = request.get_json()
