@@ -160,7 +160,7 @@ Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://tw
 Second part of Airbnb:<br/>
 Joann Vuong
 
-Third part of Aibnb:<br/>
+Third part of Airbnb:<br/>
 Banu Sapakova - [Github](https://github.com/banuaksom)<br/>
 Sudeep Raj - [Github](https://github.com/rajsudeep)<br/>
 
