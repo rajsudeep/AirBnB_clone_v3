@@ -31,6 +31,6 @@ class User(BaseModel, Base):
 
     def __setattr__(self, name, value):
         """handle attribute assignment"""
-        if name is "password":
+        if name == "password":
             value = md5(value.encode()).hexdigest()
         super().__setattr__(name, value)
