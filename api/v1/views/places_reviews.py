@@ -50,7 +50,11 @@ def post_review(place_id):
     req = request.get_json()
     if not req:
         abort(400, "Not a JSON")
-    if 'text' not in req:
+    elif 'user_id' not in req:
+        abort(400, "Missing user_id")
+    elif not storage.get('User', req['user_id']):
+        abort(404)
+    elif 'text' not in req:
         abort(400, "Missing text")
     req["place_id"] = place_id
     obj = Review(**req)
