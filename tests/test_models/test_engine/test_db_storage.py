@@ -110,8 +110,6 @@ class TestFileStorage(unittest.TestCase):
         s.save()
         retrieved_state = models.storage.get('State', s.id)
         self.assertEqual(retrieved_state, s)
-        retrieved_state = models.storage.get('State', 5)
-        self.assertEqual(retrieved_state, None)
         retrieved_state = models.storage.get('State', 2.2)
         self.assertEqual(retrieved_state, None)
         retrieved_state = models.storage.get('hey', s.id)
