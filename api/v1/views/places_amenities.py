@@ -14,7 +14,9 @@ def get_places_by_amenity(place_id):
     obj = storage.get("Place", place_id)
     if not obj:
         abort(404)
-    new_dict = [amenity.to_dict() for amenity in obj.amenities]
+    new_dict = []
+    for amenity in obj.amenities:
+        new_dict.append(amenity.to_dict())
     return jsonify(new_dict)
 
 
