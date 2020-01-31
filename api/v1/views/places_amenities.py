@@ -37,7 +37,7 @@ def delete_amenity_by_place(place_id, amenity_id):
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['POST'],
                  strict_slashes=False)
-def post_amenity_by_place(place_id):
+def post_amenity_by_place(place_id, amenity_id):
     """ creates amenity obj """
     place = storage.get("Place", place_id)
     if not place:
