@@ -28,11 +28,11 @@ def delete_amenity_by_place(place_id, amenity_id):
     amenity = storage.get("Amenity", amenity_id)
     if not amenity:
         abort(404)
-    if amenity in place.amenities:
-        place.amenities.remove(amenity)
-        storage.save()
-        return make_response(jsonify({}), 200)
-    abort(404)
+    if amenity not in place.amenities:
+        abort(404)
+    place.amenities.remove(amenity)
+    storage.save()
+    return make_response(jsonify({}), 200)
 
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['POST'],
