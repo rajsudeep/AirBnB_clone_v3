@@ -14,9 +14,7 @@ def get_places_by_amenity(place_id):
     obj = storage.get("Place", place_id)
     if not obj:
         abort(404)
-    new_dict = []
-    for amenity in obj.amenities:
-        new_dict.append(amenity.to_dict())
+    new_dict = [amenity.to_dict() for amenity in obj.amenities]
     return jsonify(new_dict)
 
 
@@ -48,8 +46,8 @@ def post_amenity_by_place(place_id):
     if not amenity:
         abort(404)
     if amenity in place.amenities:
-        return make_response(amenity.to_dict(), 200)
+        return make_response(jsonify(amenity.to_dict()), 200)
     else:
         place.amenities.append(amenity)
         storage.save()
-        return make_response(obj.to_dict(), 201)
+        return make_response(jsonify(obj.to_dict()), 201)
